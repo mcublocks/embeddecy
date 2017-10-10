@@ -1,0 +1,1013 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Язык Embeddecy &mdash; Документация Язык Embeddecy 1.0.0</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Документация Язык Embeddecy 1.0.0" href="#"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> Язык Embeddecy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Язык Embeddecy</a></li>
+<li><a class="reference internal" href="#id1">Назначение</a></li>
+<li><a class="reference internal" href="#id2">Модульность</a></li>
+<li><a class="reference internal" href="#id3">Области видимости</a></li>
+<li><a class="reference internal" href="#id4">Делегаты и анонимные функции</a></li>
+<li><a class="reference internal" href="#id5">Параллельное программирование</a></li>
+<li><a class="reference internal" href="#id6">События</a></li>
+<li><a class="reference internal" href="#id7">Удобная работа с битами</a></li>
+<li><a class="reference internal" href="#id8">Перечисления</a></li>
+<li><a class="reference internal" href="#mcu-remoting">MCU Remoting и поддержка распределенных программ</a></li>
+<li><a class="reference internal" href="#id9">Шаблоны модулей</a></li>
+<li><a class="reference internal" href="#id10">Пример описания шаблона модуля</a></li>
+<li><a class="reference internal" href="#id11">Инстанциация шаблонов</a></li>
+<li><a class="reference internal" href="#id12">Тракт трансляции</a></li>
+<li><a class="reference internal" href="#id13">Пример описания модуля управления виртуальным блоком, управляющим светодиодом</a></li>
+<li><a class="reference internal" href="#id14">Пример кода, включающий различные конструкции (без программного смысла)</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Язык Embeddecy</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Язык Embeddecy</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="embeddecy">
+<h1>Язык Embeddecy<a class="headerlink" href="#embeddecy" title="Ссылка на этот заголовок">¶</a></h1>
+</div>
+<div class="section" id="id1">
+<h1>Назначение<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Язык Embeddecy является высокоуровневым языком программирования микроконтроллеров, представляет собой надстройку над языком С.
+На языке Embeddecy описываются программы для программируемых устройств в системе MCU Blocks.</p>
+</div>
+<div class="section" id="id2">
+<h1>Модульность<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Программа на языке Embeddecy описывается в файлах <code class="docutils literal"><span class="pre">*.embс</span></code>, которые превращаются транслятором в обычные С-файлы.
+Язык Embeddecy совмещен с языком С следующим образом:</p>
+<ol class="arabic simple">
+<li>Синтаксис языка Embeddecy основан на синтаксисе языка С с добавлением дополнительных конструкций;</li>
+<li>Программа на языке Embeddecy описывается в файлах <code class="docutils literal"><span class="pre">*.embc</span></code>;</li>
+<li>Имеется возможность обращаться из программы на языке Embeddecy к модулям на других языках программирования (например, на языке С).</li>
+</ol>
+<p>Элементы языка Embeddecy описываются в пространствах имен, задаваемых с помощью слова <code class="docutils literal"><span class="pre">namespace</span></code>.
+Элементами языка Embeddecy являются все элементы языка С, а также такие новые элементы как:</p>
+<ul class="simple">
+<li>модули (задачи - <code class="docutils literal"><span class="pre">task</span></code>, пакеты - <code class="docutils literal"><span class="pre">package</span></code>)</li>
+<li>пользовательские типы (объявленные через <code class="docutils literal"><span class="pre">typedef</span></code>, перечисленческие <code class="docutils literal"><span class="pre">enum</span></code> и структурные <code class="docutils literal"><span class="pre">struct</span></code> типы);</li>
+<li>анонимные функции;</li>
+<li>типы делегатов и переменные-делегаты (<code class="docutils literal"><span class="pre">delegate</span></code>);</li>
+<li>события (<code class="docutils literal"><span class="pre">event</span></code>);</li>
+<li>шаблоны модулей (<code class="docutils literal"><span class="pre">template</span></code>, объявления параметров);</li>
+<li>интерфейсы (<code class="docutils literal"><span class="pre">interface</span></code>);</li>
+<li>директивы препроцессора (<code class="docutils literal"><span class="pre">#define_module</span></code>, <code class="docutils literal"><span class="pre">#main</span></code>).</li>
+</ul>
+<p><strong>Задачи</strong>, в отличие от <strong>пакетов</strong>, содержат поток управления и исполняются параллельно другим задачам.
+Задачи обмениваются друг с другом сообщениями, сигнатуры которых описываются в теле задачи.
+Функции задач не видны извне - их можно вызывать только изнутри (из других функций этой же задачи)
+и поэтому можно сказать, что весь код задачи исполняется всегда только в ее потоке управления.
+Код функций пакетов исполняется в том потоке управления, из которого происходит вызов этих функций.
+Пакеты и задачи не являются объектами в терминологии объектно-ориентированных языков программирования,
+т. е. их нельзя создавать динамически: существeт только по одному экземпляру каждой описанной
+в коде задачи и на них невозможно в коде получить ссылку.</p>
+<p>Интересной особенностью языка, позволяющей удобно оформлять библиотечные решения, является возможность
+описывать <strong>шаблоны модулей</strong> с параметрами. Для того, чтобы шаблон модуля превратился непосредственно в модуль,
+необходимо его <strong>инстанцировать</strong>, т. е. задать формальным параметрам шаблона фактические значения.</p>
+<p>В одном файле может быть описано несколько модулей, каждый может находиться в своем пространстве имен.
+Нет никаких ограничений на имя файла: имя файла никак не привязано к содержимому файла.
+В системе существует понятие <strong>библиотеки</strong> как набора исходных файлов Embeddecy в файловой структуре,
+расположенных внутри определенной папки (и вложенных в нее папках). В бинарном или объектном виде Embeddecy
+файлы не распространяются в отличие от статических библиотек <code class="docutils literal"><span class="pre">.lib</span></code> и объектных файлов <code class="docutils literal"><span class="pre">.obj</span></code> для языка С.</p>
+<p>В IDE файлы на языке Embeddecy и С разбиваются по <strong>устройствам</strong>, к которым эти файлы относятся.
+Точкой входа в программу устройства является функция, помеченная директивой <code class="docutils literal"><span class="pre">#main</span></code>
+(директивой также может быть помечено тело задачи <code class="docutils literal"><span class="pre">body</span></code>). Все задачи должны быть запущены
+пользователем самостоятельно (обычно в начале программы). Однако если точкой входа является функция <code class="docutils literal"><span class="pre">body</span></code>
+(т.е. она помечена директивой <code class="docutils literal"><span class="pre">#main</span></code>) одной из задач, то эта задача будет запущена автоматически,
+пользователю необходимо запустить остальные задачи самостоятельно. Если в файлах устройства нет функций,
+помеченных директивой <code class="docutils literal"><span class="pre">#main</span></code>, то ищется стандартная точка входа языка С (функция <code class="docutils literal"><span class="pre">main</span></code>).</p>
+</div>
+<div class="section" id="id3">
+<h1>Области видимости<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Области видимости в языке Embeddecy определяют список доступных из некоторой области
+программы элементов из другой области программы. Под доступностью элементов обычно понимается
+возможность обращения к ним через их прямые короткие названия без указания областей, в которых они находятся.
+Т.к. модули описывают в файлах, а сущность “файл” никак не представлена в языке, то области видимости в системе
+задаются не только с помощью средств языка, но и с помощью средств инструментальной среды: в среде для проекта указываются
+ссылки на библиотеки как наборы файлов, среди которых необходимо искать нужные модули.</p>
+<p>В языке Embeddecy области видимости задаются на двух уровнях:</p>
+<ol class="arabic simple">
+<li>видимость элементов пространств имен;</li>
+<li>видимость элементов модулей.</li>
+</ol>
+<p><strong>Видимость элементов пространств имен</strong>. Видимость элементов пространств имен
+представляет собой возможность из некоторой области программы обращаться к элементам
+некоторого пространства имен непосредственно через их короткое название. Элементы,
+описанные в одном пространстве имен видны друг другу. Элементы, описанные вне пространств имен,
+видны отовсюду. Для того чтобы включить в область видимости одного пространства имен элементы
+из другого, необходимо импортировать данные элементы при помощи директивы <code class="docutils literal"><span class="pre">import</span></code>.
+При импортировании можно указать как отдельный элемент (с указанием пространства имен,
+в котором он находится), а также можно импортировать все элементы из пространства имен при
+использовании символа *. Также можно импортировать элементы файлов на языке С, для чего используется ключевое слово <code class="docutils literal"><span class="pre">importc</span></code>.</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">namespace</span> <span class="n">MyNameSpace</span>
+ <span class="p">{</span>
+ <span class="n">importc</span> <span class="s">&quot;headerfile.h&quot;</span><span class="p">;</span>
+ <span class="n">import</span> <span class="n">MCUBlocks</span><span class="p">.</span><span class="n">atmel</span><span class="p">.</span><span class="n">atmega1280</span><span class="p">.</span><span class="n">UART1</span><span class="p">;</span><span class="c1">// импорт шаблона м.у.а.б. UART1</span>
+ <span class="n">import</span> <span class="n">MCUBlocks</span><span class="p">.</span><span class="n">atmel</span><span class="p">.</span><span class="n">atmega1280</span><span class="p">.</span><span class="o">*</span><span class="p">;</span> <span class="c1">// импорт всех элементов</span>
+ <span class="c1">// пространства имен MCU Blocks.atmel.atmega1280</span>
+ <span class="cp">#init_module UART1 MY_UART1 </span><span class="c1">// инициализация модуля MY_UART1 по</span>
+                                <span class="c1">// шаблону UART1</span>
+ <span class="p">{</span>
+     <span class="p">...</span>
+ <span class="p">}</span>
+ <span class="p">...</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>Без области видимости обращение к элементу другого пространства имени возможно только через имя
+этого пространства. Например, если в предыдущем примере не импортировать элементы пространства имен
+MCUBlocks.atmel.atmega1280, то инициализировать модуль по шаблону придется так:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#init_module MCUBlocks.atmel.atmega1280.UART1 MY_UART1</span>
+ <span class="c1">// инициализация модуля MY_UART1 по шаблону UART1</span>
+ <span class="p">{</span>
+     <span class="p">...</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>Пространства имен могут быть вложенными друг в друга. В таком случае именем дочернего пространства
+имен становится имя, составленное из имени, в котором находится данное пространство имен, символа &#8221;.&#8221;
+и короткого имени самого дочернего пространства имен. Ниже приведен пример, показывающий различные
+аспекты задания областей видимости за счет использования пространств имен.</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">z1</span><span class="p">;</span>
+<span class="n">namespace</span> <span class="n">MCUBlocks</span>
+<span class="p">{</span>
+    <span class="n">namespace</span> <span class="n">atmel</span> <span class="c1">// полное название = MCUBlocks.atmel</span>
+    <span class="p">{</span>
+            <span class="k">const</span> <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="kt">int</span> <span class="n">a2</span><span class="p">;</span>
+            <span class="kt">void</span> <span class="nf">func1</span><span class="p">()</span>
+            <span class="p">{</span>
+                    <span class="c1">// поскольку не было import приходится указывать</span>
+                    <span class="c1">// название пространства имен</span>
+                    <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">MCUBlocks</span><span class="p">.</span><span class="n">b</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">namespace</span> <span class="n">atmega1280</span>
+            <span class="p">{</span>
+                    <span class="n">import</span> <span class="n">MCUBlocks</span><span class="p">.</span><span class="o">*</span><span class="p">;</span>
+                    <span class="n">import</span> <span class="n">MCUBlocks</span><span class="p">.</span><span class="n">atmel</span><span class="p">.</span><span class="n">a2</span><span class="p">;</span>
+                    <span class="c1">// можно обращаться по короткому названию, т.к.</span>
+                    <span class="c1">// было произведено импортирование</span>
+                    <span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+                    <span class="c1">// поскольку не было импортирования, то</span>
+                    <span class="c1">// приходится указывать пространство имен</span>
+                    <span class="n">d</span> <span class="o">=</span> <span class="n">MCUBlocks</span><span class="p">.</span><span class="n">atmel</span><span class="p">.</span><span class="n">a</span><span class="p">;</span>
+                    <span class="c1">// можно обращаться по короткому названию, т.к.</span>
+                    <span class="c1">// было произведено импортирование</span>
+                    <span class="n">d</span> <span class="o">=</span> <span class="n">a2</span><span class="p">;</span>
+                    <span class="n">d</span> <span class="o">=</span> <span class="n">z1</span><span class="p">;</span> <span class="c1">// т.к. вне пространств имен</span>
+            <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="c1">// поскольку не было импортирования, то</span>
+    <span class="c1">// приходится указывать пространство имен</span>
+    <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">MCU</span> <span class="n">Blocks</span><span class="p">.</span><span class="n">atmel</span><span class="p">.</span><span class="n">a</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Видимость элементов модулей.</strong> Второй уровень областей видимости позволяет задать
+видимость отдельных элементов видимых пакетов. Существует два модификатора видимости элемента
+пакета: <code class="docutils literal"><span class="pre">private</span></code> - невидимый извне и <code class="docutils literal"><span class="pre">public</span></code> - видимый извне данного модуля.
+Однако есть ограничение для задач: у задачи видимыми могут быть только сообщения и события
+(только с ними можно использовать модификатор видимости <code class="docutils literal"><span class="pre">public</span></code> - все остальные
+элементы задач всегда невидимы и с ними нельзя использовать модификатор <code class="docutils literal"><span class="pre">public</span></code>
+а модификатор <code class="docutils literal"><span class="pre">private</span></code> в таком случае не нужен (хотя может быть использован для наглядности).
+Что касается пакетов, для их элементом по умолчанию задается модификатор доступа <code class="docutils literal"><span class="pre">private</span></code>
+(если модификатор опущен). Модификатор доступа идет первым при описании элемента пакета.</p>
+<p>Существуют ограничения на области видимости, которые задаются принадлежностью кода
+файлам для разных устройств (подробнее в разделе MCU Remoting).</p>
+</div>
+<div class="section" id="id4">
+<h1>Делегаты и анонимные функции<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Анонимные функции - функции, у которых описан только код функции без ее сигнатуры.
+Использование анонимных функций является удобным способом использовать параметризируемый
+код без отдельного описания самой функции как элемента модуля и без задания ей названия.</p>
+<p>Формат описания анонимной функции таков:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>([&lt;типа параметра 1&gt;] &lt;название параметра1&gt;, …, [&lt;типа параметра n&gt;] &lt;название параметраn&gt;) -&gt; {&lt;блок кода&gt;},
+</pre></div>
+</div>
+<p>Например</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">float</span> <span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">{</span><span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;}</span>
+</pre></div>
+</div>
+<p>В область видимости кода в анонимной функции входит область видимости кода в точке
+использования согласно общим правилам, а также список параметров. Если типы параметров
+анонимной фунцкции не указаны, они берутся из сигнатуры события, на которое осуществляется
+подписка или из сигнатуры делегата, которому выполняется присваивание. Тип возвращаемого
+значения определяется по выражению <code class="docutils literal"><span class="pre">return</span></code> в коде функции как супертип возможнных
+возвращемых функцией значени; если выражения <code class="docutils literal"><span class="pre">return</span></code> не имеется, то предполагается тип возвращаемого значения как <code class="docutils literal"><span class="pre">void</span></code>
+Анонимные функции могут использоваться:</p>
+<ol class="arabic simple">
+<li>для подписки на события;</li>
+<li>для присвоения переменной-делегату (или передачу делегату как значение параметра).</li>
+</ol>
+<p>Делегаты - переменные, представляющие собой ссылку на явную или анонимную функцию
+и введенные в языке Embeddecy как синтаксический сахар вместо использования указателей
+на функцию. Для описания делегата, сначала необходимо задать тип делегата, после чего
+уже можно объявлять переменную-делегат заданного типа. При описании типа делегата
+указывается ключевое слово <code class="docutils literal"><span class="pre">delegate</span></code> название вводимого типа-делегата и сигнатура функции.</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">delegate</span> <span class="kt">void</span> <span class="nf">mydelegate</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span> <span class="c1">// описание типа mydelegate как</span>
+<span class="c1">// делегата на функцию с двумя целочисл. пар-ми</span>
+<span class="n">delegate</span> <span class="kt">void</span> <span class="nf">mydelegate</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">);</span> <span class="c1">// использование имен переменных</span>
+<span class="c1">// возможно, но имеет смысл только для документации</span>
+<span class="c1">// и прозрачности кода</span>
+</pre></div>
+</div>
+<p>После этого тип делегата можно использовать как обычный тип в языке С, т.е.
+использовать переменные-делегаты с данным типом. В коде переменной-делегату можно
+присвоить значение - либо существующую функцию с аналогичной сигнатурой, либо
+анонимную функцию. Можно также передавать делегат как параметр.</p>
+<p>Примеры использования делегатов:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">someFunc1</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">someFunc2</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">);</span>
+<span class="n">delegate</span> <span class="kt">void</span> <span class="nf">mydelegate</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">);</span> <span class="c1">// описание типа делегата</span>
+<span class="n">delegate</span> <span class="kt">float</span> <span class="nf">mydelegate2</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">);</span> <span class="c1">// описание типа делегата</span>
+<span class="n">mydelegate</span> <span class="n">d</span> <span class="o">=</span> <span class="n">somefunc1</span><span class="p">;</span> <span class="c1">// инициализация делегата somefunc1</span>
+<span class="n">mydelegate2</span> <span class="n">d2</span><span class="p">;</span>
+<span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span>
+<span class="p">{</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">somefunc2</span><span class="p">;</span> <span class="c1">// с этого момента делегат ссылается</span>
+   <span class="c1">// на функцию somefunc2</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span><span class="o">-&gt;</span><span class="p">{</span><span class="n">send</span> <span class="n">task1</span><span class="p">.</span><span class="n">mes1</span><span class="p">(</span><span class="n">a</span><span class="p">);};</span> <span class="c1">// с этого момента делегат</span>
+<span class="c1">//ссылается на анонимную функцию которая отсылает сообщение,</span>
+                    <span class="c1">//передавая параметр “a” из вызывающего делегат кода</span>
+            <span class="c1">// более полная запись делегирования, приведенного выше</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span><span class="kt">int</span> <span class="n">b</span><span class="p">)</span><span class="o">-&gt;</span><span class="p">{</span><span class="n">send</span> <span class="n">task1</span><span class="p">.</span><span class="n">mes1</span><span class="p">(</span><span class="n">a</span><span class="p">);};</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span><span class="o">-&gt;</span>
+<span class="p">{</span> <span class="c1">// с этого момента делегат ссылается</span>
+  <span class="c1">// на анонимную функцию</span>
+<span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="p">{</span><span class="k">return</span> <span class="n">a</span><span class="o">==</span><span class="n">b</span><span class="o">?</span> <span class="n">a</span><span class="o">+</span><span class="mi">5</span> <span class="o">:</span> <span class="n">b</span><span class="o">+</span><span class="mf">6.0</span><span class="p">;};</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h1>Параллельное программирование<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Основное отличие задачи от пакета заключается в том, что задачи
+исполняются параллельно, поскольку каждая содержит свой поток управления.
+Взаимодействие между задачами осуществляется посредством отсылки и принятия
+сообщений (часть из них отсылаются при возникновении событий). Сообщения могут
+иметь параметры и их можно отправлять синхронно и асинхронно. Отправить сообщение
+пакету невозможно - у него возможно только вызвать функцию. Задачам функции нужны
+только для внутреннего пользования.</p>
+<p>Синхронный способ взаимодействия между задачами предполагает взаимодействие
+через механизм &#8220;рандеву&#8221;: задача-инициатор посылает другой задаче запрос на
+рандеву и ждет согласия, после согласия принимающей задачи рандеву считается
+произведенным и вызывается код по обработке сообщения принимающей задачи, после
+чего исполнение кода в каждой задаче продолжается. Также синхронно в задаче
+вызывается событие как последовательный синхронный вызов обработчиков функций
+(анонимных или тех, на которые ссылаются подписанные делегаты).</p>
+<p>Асинхронный вызов функции и отсылка сообщения предполагают, что исполнение
+кода вызывающей задачи продолжится сразу после отсылки запроса без какого-либо
+ожидания принятия данного вызова со стороны принимающей задачи.</p>
+<p>Для управления пакетами и задачами в язык внедрены конструкции, представленные в таблице 1.</p>
+<table border="1" class="docutils" id="id15">
+<caption><span class="caption-text">Таблица 1. Конструкции для работы с задачами и для взаимодействия между модулями</span><a class="headerlink" href="#id15" title="Постоянная ссылка на таблицу">¶</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Описание команды</th>
+<th class="head">Пример</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Описание задачи</td>
+<td><code class="docutils literal"><span class="pre">task&lt;имя</span> <span class="pre">задачи&gt;</span> <span class="pre">{&lt;описание</span> <span class="pre">функций&gt;</span> <span class="pre">body{&lt;тело</span> <span class="pre">задачи&gt;}}</span></code></td>
+</tr>
+<tr class="row-odd"><td>Запустить планировщик</td>
+<td><code class="docutils literal"><span class="pre">startSheduler();</span></code></td>
+</tr>
+<tr class="row-even"><td>Остановить задачу и удалить ее
+(внутри задачи)</td>
+<td><code class="docutils literal"><span class="pre">deleteTask();</span></code></td>
+</tr>
+<tr class="row-odd"><td>Остановить задачу и удалить ее
+(извне с указанием имени удаляемой задачи)</td>
+<td><code class="docutils literal"><span class="pre">&lt;имя</span> <span class="pre">задачи&gt;.deleteTask();</span></code></td>
+</tr>
+<tr class="row-even"><td>Выдержка паузы в данной задаче в течение заданного количества миллисекунд</td>
+<td><code class="docutils literal"><span class="pre">&lt;имя</span> <span class="pre">задачи&gt;.delay_ms(ms_count)</span></code></td>
+</tr>
+<tr class="row-odd"><td>Синхронная отправка сообщения</td>
+<td><code class="docutils literal"><span class="pre">&lt;имя</span> <span class="pre">задачи&gt;.&lt;имя</span> <span class="pre">сообщения&gt;(&lt;факт.</span> <span class="pre">пар-ры&gt;);</span></code></td>
+</tr>
+<tr class="row-even"><td>Асинхронная отправка сообщения</td>
+<td><code class="docutils literal"><span class="pre">send</span> <span class="pre">&lt;имя</span> <span class="pre">задачи&gt;.&lt;имя</span> <span class="pre">сообщ&gt;(&lt;</span> <span class="pre">факт.</span> <span class="pre">пар-ры</span> <span class="pre">&gt;);</span></code></td>
+</tr>
+<tr class="row-odd"><td>Проверить, нет ли непринятого сообщения</td>
+<td><code class="docutils literal"><span class="pre">hasmessage(&lt;имя</span> <span class="pre">сообщ.&gt;);</span></code></td>
+</tr>
+<tr class="row-even"><td>Прием сообщения</td>
+<td><code class="docutils literal"><span class="pre">accept</span> <span class="pre">&lt;имя</span> <span class="pre">сообщ.&gt;;</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>Для целей синхронизации внутри функций пакетов возможно использовать семафоры (бинарные и счетные),
+а также предлагается использовать конструкцию <code class="docutils literal"><span class="pre">critical</span></code> { &lt;критическая секция&gt; } для обозначения
+кода критической секции. Критической секцией считается участок кода, который может исполняться только
+в одной задаче и не может быть прерван другим или параллельно исполнен другим (для этого при входе в
+секцию отключается прерывания и планировщик Использование данной конструкции предполагает автоматическую
+синхронизацию по бинарному семафору и отключение прерываний для микроконтроллера при входе в секцию и восстановление при выходе из нее.</p>
+</div>
+<div class="section" id="id6">
+<h1>События<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h1>
+<p>В языке Embeddecy события используются для удобства централизованного вызова кода делегатов и
+анонимных функций. Событие имеет параметры (наподобие функции) и описывается следующим образом:</p>
+<p><code class="docutils literal"><span class="pre">event</span></code> myEvent(&lt;формальные параметры&gt;);</p>
+<p>Делегаты и анонимные функции, которые необходимо вызывать при возникновении события, необходимо
+подписывать на это событие. На событие можно подписывать только делегаты и анонимные функции, не
+возвращающие значения (т.е. тип возвращаемого значения <code class="docutils literal"><span class="pre">void</span></code>). Преимуществом использования делегатов
+является возможность впоследствии отписать делегат от события, в то время как анонимную функцию напрямую
+можно только подписать на событие. Подписка делегатов и анонимных функций на событие производится при помощи
+оператора <code class="docutils literal"><span class="pre">+=</span></code>, удаление подписки - <code class="docutils literal"><span class="pre">-=</span></code>. Для подписки на событие, находящееся в другом устройстве, используется оператор <code class="docutils literal"><span class="pre">via</span></code>.</p>
+<p>Синтаксис подписки выглядит следующим образом:</p>
+<p>&lt;Название задачи&gt;.&lt;Название события&gt; <code class="docutils literal"><span class="pre">+=</span></code> &lt;делегат&gt;/&lt;анонимная функция&gt;;</p>
+<p>&lt;Название задачи&gt;.&lt;Название события&gt; <code class="docutils literal"><span class="pre">-=</span></code> &lt;делегат&gt;;</p>
+<p>Примеры:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">task1</span><span class="p">.</span><span class="n">myEvent</span> <span class="o">+=</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span><span class="o">-&gt;</span><span class="p">{</span><span class="n">task2</span><span class="p">.</span><span class="n">MyMessage</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);};</span>
+<span class="n">task1</span><span class="p">.</span><span class="n">myEvent</span> <span class="o">+=</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span><span class="o">-&gt;</span><span class="p">{</span><span class="n">send</span> <span class="n">task2</span><span class="p">.</span><span class="n">MyMessage</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);};</span>
+<span class="n">task1</span><span class="p">.</span><span class="n">myEvent</span> <span class="o">+=</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span><span class="o">-&gt;</span>
+<span class="p">{</span>
+<span class="n">send</span> <span class="n">task2</span><span class="p">.</span><span class="n">MyMessage</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="n">delegate</span> <span class="kt">void</span> <span class="nf">td</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+<span class="n">td</span> <span class="n">deleg</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span><span class="o">-&gt;</span><span class="p">{</span><span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span> <span class="k">return</span><span class="p">;};</span>
+<span class="n">task1</span><span class="p">.</span><span class="n">myEvent</span> <span class="o">+=</span> <span class="n">deleg</span><span class="p">;</span>
+<span class="n">task1</span><span class="p">.</span><span class="n">myEvent</span> <span class="o">-=</span> <span class="n">deleg</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Вызов события может быть произведен только из модуля, в котором оно объявлено следующим образом:</p>
+<p>myEvent(5, 6);</p>
+</div>
+<div class="section" id="id7">
+<h1>Удобная работа с битами<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Для удобства работы c битами переменных каждая переменая целочисленных типов представляется как
+массив, элементами которого являются биты (тип <code class="docutils literal"><span class="pre">bin</span></code>). Обращения к битам целочисленного типа
+синтаксически производится как обращение к элементам массива с использованием номера бита в
+операторе обращения к элементу массива <code class="docutils literal"><span class="pre">[]</span></code>.</p>
+<p>Пример:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">bin</span> <span class="n">c2</span><span class="p">;</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="c1">// c2 == 1</span>
+<span class="n">PORTA</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// PORTA &amp;= ~(1 &lt;&lt; 7)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h1>Перечисления<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h1>
+<p>В языке С, как известно, в коде элементы перечисления используются как константы, без использования
+имени перечисления, что делает невозможным использование одноименных элементов разных перечислений.
+Например, если в перечислении <code class="docutils literal"><span class="pre">Colors</span></code> описан элемент <code class="docutils literal"><span class="pre">RED</span></code>, то второго такого элемента не может быть ни в
+каком другом перечислении (имя RED резервируется как если бы <code class="docutils literal"><span class="pre">RED</span></code> была простой константой). В языках C# и
+Java такого ограничения нет, поскольку обращение к элементу перечисления идет через имя перечисления, например,
+<code class="docutils literal"><span class="pre">Colors.RED</span></code>. В языке Embeddecy реализована поддержка обоих подходов:</p>
+<p>1. Существует возможность использовать в коде элемент перечисления как константу без указания названия
+перечисления. Данный подход является устаревшим подходом языка С и не рекомендуется к использованию и
+поэтому элементы перечислений не появляются в автодополнении если не указано имя перечисления. Данный
+подход применяется к каждому отдельно взятому элементу перечисления следующим образом: если в коде было
+использвано имя элемента перечисления, то данный элемент считется использующимся как константа и в этом
+случае включается правило “не может существовать элемента с другим таким именем в другом перечислении”
+(в противном случае будет выдаваться ошибка компиляции).</p>
+<p>2. Наиболее приемлемым считается подход, при котором обращение к элементам перечисления идет через имя
+перечисления, например, <code class="docutils literal"><span class="pre">Colors.RED</span></code>. В этом случае элемент <code class="docutils literal"><span class="pre">RED</span></code> может существовать в любом другом перечислении.</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">Colors</span>
+<span class="p">{</span>
+     <span class="n">Red</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Green</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Blue</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mcu-remoting">
+<h1>MCU Remoting и поддержка распределенных программ<a class="headerlink" href="#mcu-remoting" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Технология MCU Remoting предназначена для упрощения описания программ для разных автоматизирующих устройств,
+взаимодействующих друг с другом. Суть ее заключается в следующем: абстрагироваться от уровня аппаратных интерфейсов и
+протоколов, построенных поверх них, до уровня модулей в разных устройствах, которые обмениваются друг с другом
+параметризируемыми сообщениями. В случае обмена сообщениями между модулями разных устройств пользователю предлагается
+выбрать интерфейс, по которому должно отправляться сообщение. Фактически указание интерфейса, по которому необходимо
+передавать сообщение или производить синхронный вызов, прозводится через имя модуля управления блоком, который управляет
+необходимым интерфейсным блоком. Указание названия интерфейсного модуля управления идет через слово <code class="docutils literal"><span class="pre">via</span></code> после
+сигнатуры отсылаемого сообщения. Например, асинхронный вызов сообщения message1 задачи <code class="docutils literal"><span class="pre">task3</span></code> через модуль
+управления интерфейсным блоком <code class="docutils literal"><span class="pre">SPI1</span></code>:</p>
+<p><code class="docutils literal"><span class="pre">send</span></code> task3.message1(&lt;параметры&gt;) <code class="docutils literal"><span class="pre">via</span></code> SPI1;</p>
+<p>Удаленная подписка:</p>
+<p>task3.event1 += <code class="docutils literal"><span class="pre">send</span></code> task3.message1(&lt;параметры&gt;) <code class="docutils literal"><span class="pre">via</span></code> SPI1;</p>
+<p>Следует отметить ограничения поддержки написания распределенных программ: среди элементов программ, находящихся
+в разных устройствах, взаимодействовать могут только модули в конструкциях с оператором <code class="docutils literal"><span class="pre">via</span></code>. Причем взаимодействие
+это возможно только через отсылку сообщений задачам,  вызова функций пакетов, вызова событий и делегатов. Для фрагментов
+программ, находящимися в разных устройствах:</p>
+<ul>
+<li><dl class="first docutils">
+<dt>возможно Только с помощью оператора <code class="docutils literal"><span class="pre">via</span></code></dt>
+<dd><ul class="first last simple">
+<li>вызывать функции пакетов,</li>
+<li>отсылать сообщения,</li>
+<li>вызывать события,</li>
+<li>вызывать делегаты пакета.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">нельзя напрямую обращаться к переменным (вне пространства имени, внутри него или к переменным пакета)</p>
+</li>
+<li><p class="first">одно пространство имен может распространяться только на одно устройство</p>
+</li>
+<li><p class="first">предупреждение, не являющееся ошибкой: при удаленном вызове или передаче сообщения не желательно передавать значения параметров, содержащих адреса (указатели). Ошибкой является передача параметра-делегата.</p>
+</li>
+<li><p class="first">подписываться на события возможно только в пространстве имен, где это событие объявлено со ссылкой на функцию или делегат, содержащихся в фрагменте программы для этого же устройства.</p>
+</li>
+<li><p class="first">делегату можно присваивать функцию только из фрагмента программы этого же устройства, в котором он объявлен.</p>
+</li>
+</ul>
+<p>В качестве модуля, через который можно передавать сообщение (т.е. название модуля после оператора <code class="docutils literal"><span class="pre">via</span></code>)
+может быть только интерфейсный модуль управления. В данном случае для выяснения, является ли модуль интерфейсным,
+применяется <strong>утиная типизация</strong>: модуль является интерфейсным, если содержит присущий интерфейсным модулям набор функций.</p>
+<p>Рассмотрим пример, в котором имеются два фрагмента кода, находящихся в разных устройствах, при этом из кода
+устройства 1 невозможно обращаться к переменным устройства 2:</p>
+<p>Device1:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">a1</span><span class="p">;</span>
+<span class="n">namespace</span> <span class="n">ns1</span>
+<span class="p">{</span>
+     <span class="kt">int</span> <span class="n">b1</span><span class="p">;</span>
+     <span class="kt">void</span> <span class="nf">do1_2</span><span class="p">()</span>
+     <span class="p">{</span>
+     <span class="p">}</span>
+     <span class="n">package</span> <span class="n">p1</span>
+     <span class="p">{</span>
+             <span class="kt">int</span> <span class="n">c1</span><span class="p">;</span>
+             <span class="kt">void</span> <span class="nf">do1</span><span class="p">()</span>
+             <span class="p">{</span>
+             <span class="n">a2</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// ошибка компиляции: необъявленный ID</span>
+             <span class="n">ns2</span><span class="p">.</span><span class="n">b2</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// ошибка: попытка доступа к переменным</span>
+             <span class="c1">// другого устройства</span>
+             <span class="n">ns2</span><span class="p">.</span><span class="n">p2</span><span class="p">.</span><span class="n">c2</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// ошибка: попытка доступа к переменным</span>
+                     <span class="c1">// другого устройства</span>
+             <span class="n">ns2</span><span class="p">.</span><span class="n">p2</span><span class="p">.</span><span class="n">do2</span><span class="p">();</span> <span class="c1">// ошибка: попытка доступа к элементу</span>
+                             <span class="c1">// модуля другого устройства</span>
+                             <span class="c1">// без использования интерфейса (via)</span>
+             <span class="n">ns2</span><span class="p">.</span><span class="n">event2</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="n">via</span> <span class="o">&lt;</span><span class="n">interface</span> <span class="n">module</span><span class="o">&gt;</span><span class="p">;</span> <span class="c1">// возможно</span>
+             <span class="n">ns2</span><span class="p">.</span><span class="n">event2</span> <span class="o">+=</span>  <span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span><span class="p">;</span> <span class="c1">// запрещено</span>
+             <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">deleg2</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="n">via</span> <span class="o">&lt;</span><span class="n">interface</span> <span class="n">module</span><span class="o">&gt;</span><span class="p">;</span> <span class="c1">// возможно</span>
+             <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">deleg2</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="n">via</span> <span class="o">&lt;</span><span class="n">non</span><span class="o">-</span><span class="n">interface</span> <span class="n">module</span><span class="o">&gt;</span><span class="p">;</span> <span class="c1">// нельзя</span>
+             <span class="n">deleg2</span> <span class="o">=</span> <span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span><span class="p">;</span> <span class="c1">// запрещено</span>
+             <span class="p">};</span>
+     <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Device2:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">a2</span><span class="p">;</span>
+<span class="n">namespace</span> <span class="n">ns2</span>
+<span class="p">{</span>
+     <span class="n">event</span> <span class="n">event2</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+     <span class="n">delegate</span> <span class="kt">int</span> <span class="nf">tdeleg</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+     <span class="n">tdeleg</span> <span class="n">deleg2</span><span class="p">;</span>
+     <span class="kt">int</span> <span class="n">b2</span><span class="p">;</span>
+     <span class="n">package</span> <span class="n">p2</span><span class="p">{</span>
+             <span class="kt">int</span> <span class="n">c2</span><span class="p">;</span>
+             <span class="kt">void</span> <span class="nf">do2</span><span class="p">(){</span>
+             <span class="c1">// все аналогично p1.do1();</span>
+             <span class="p">};</span>
+       <span class="p">}</span>
+     <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h1>Шаблоны модулей<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Шаблоны модулей позволяют описать модули (пакеты и задачи) и их параметры, для
+которых затем при инстанциации будут заданы конкретные значения. Параметры модулей
+описываются с помощью специальных директив.</p>
+<p>Существует три вида параметров шаблонов модулей управления:</p>
+<ol class="arabic simple">
+<li>макро-параметры;</li>
+<li>параметры-типы;</li>
+<li>параметры-пины;</li>
+<li>параметры-значения;</li>
+<li>параметры-модули.</li>
+</ol>
+<p>Формат описания шаблона и его параметров:</p>
+<p><code class="docutils literal"><span class="pre">template</span></code> &lt;<em>module_type</em>&gt; &lt;<em>name</em>&gt;</p>
+<p>&lt;<code class="docutils literal"><span class="pre">macro</span></code> &lt;<em>param_macro_name</em>&gt;,</p>
+<p><code class="docutils literal"><span class="pre">type</span></code> &lt;<em>param_type_name</em>&gt; is &lt;<em>type1</em>&gt; | &lt;<em>type2</em>&gt; | … | &lt;<em>typen</em>&gt;,</p>
+<p><code class="docutils literal"><span class="pre">pin</span></code> &lt;<em>param_pin_name</em>&gt;,</p>
+<p><code class="docutils literal"><span class="pre">value</span></code> &lt;<em>expr_type_name</em>&gt; &lt;<em>param_expr_name</em>&gt;,</p>
+<p><code class="docutils literal"><span class="pre">module</span></code> &lt;<em>interface_name</em>&gt; &lt;<em>param_module_name</em>&gt;&gt;</p>
+<p>{&lt;...&gt; // тело шаблона модуля}</p>
+<p>где <strong>module_type</strong> – тип модуля: <strong>package / task, param_macro_name</strong> – название
+макропараметра, <strong>param_pin_name</strong> –  название параметра-пина, <strong>param_expr_name</strong> –
+название параметра-выражения, <strong>expr_type_name</strong> – название типа параметра-выражения,
+<strong>param_type_name</strong> – название параметра-типа, <strong>param_module_name</strong> – название параметра-модуля,
+<strong>interface_name</strong> – название интерфейса, который должен реализовывать модуль.</p>
+<p>Макро-параметры представляют собой строковые параметры (значением может быть любая строка символов:
+число или даже блок кода, не содержащие символ “;”).</p>
+<p>Параметры соединения с пинами устройства позволяют задать параметр, через имя которого можно обращаться
+из шаблона к некоторому пину устройства - к какому конкретно, задается в параметре при инстанциации шаблона.</p>
+<p>Параметры соединения c другими модулями позволяют задать параметр, через имя которого можно обращаться к
+содержимому стороннего модуля - какого конкретно, задается в параметре при инстанциации шаблона.</p>
+<p>Особым параметром, относящимся ко всему шаблону, является язык реализации шаблона, задающийся параметром
+в квадратных скобках: <code class="docutils literal"><span class="pre">[lang=&lt;название</span> <span class="pre">языка&gt;]</span></code>. Язык шаблона означает язык, на котором будут реализовываться
+функции шаблона. Сигнатуры при этом все так же описываются на языке Embeddecy, но все, что находится внутри
+фигурных скобок (тела функции) описывается на целевом языке, указанном в параметре.</p>
+</div>
+<div class="section" id="id10">
+<h1>Пример описания шаблона модуля<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">template</span> <span class="n">interface</span> <span class="n">ADC_GENERAL</span> <span class="c1">// обобщенный интерфейс модуля управления АЦП</span>
+<span class="o">&lt;</span> <span class="n">MCU_GeneralConfig</span> <span class="n">generalConfig</span><span class="p">,</span>
+<span class="n">type</span> <span class="n">ValueType</span> <span class="n">is</span> <span class="kt">int</span> <span class="o">|</span> <span class="kt">unsigned</span> <span class="n">byte</span><span class="p">,</span>
+<span class="n">type</span> <span class="n">BitsResolution_enum</span> <span class="n">is</span> <span class="n">ADC_AVR</span><span class="p">.</span><span class="n">BitsResolution_enum</span> <span class="o">|</span> <span class="n">ADC_STM</span><span class="p">.</span><span class="n">BitsResolution_enum</span> <span class="o">|</span> <span class="n">ADC_PIC</span><span class="p">.</span><span class="n">BitsResolution_enum</span><span class="p">,</span> <span class="p">...</span><span class="o">&gt;</span>
+<span class="p">{</span>
+     <span class="kt">void</span> <span class="n">Init</span><span class="p">();</span>
+     <span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span>
+     <span class="n">ValueType</span> <span class="n">ConvertGetSample</span> <span class="p">(</span><span class="n">Channels_enum</span> <span class="n">channel</span><span class="p">)</span>
+     <span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span>
+<span class="p">}</span>
+<span class="n">template</span> <span class="n">package</span> <span class="n">ADC_STM</span>
+<span class="o">&lt;</span> <span class="n">MCU_GeneralConfig</span> <span class="n">generalConfig</span><span class="p">,</span>
+<span class="n">type</span> <span class="n">ValueType</span> <span class="n">is</span> <span class="kt">int</span> <span class="o">|</span> <span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="n">implements</span> <span class="n">ADC_GENERAL</span> <span class="o">&lt;</span> <span class="n">MCU_GeneralConfig</span> <span class="n">generalConfig</span><span class="p">,</span>
+<span class="n">type</span> <span class="n">ValueType</span> <span class="n">is</span> <span class="kt">int</span> <span class="o">|</span> <span class="kt">unsigned</span> <span class="kt">char</span><span class="p">,</span> <span class="n">BitsResolution_enum</span> <span class="o">=</span> <span class="n">ADC_STM</span><span class="p">.</span><span class="n">BitsResolution_enum</span><span class="p">,</span> <span class="p">...</span><span class="o">&gt;</span>
+<span class="p">{</span>
+<span class="n">public</span> <span class="k">typedef</span> <span class="k">enum</span> <span class="n">BitsResolution</span> <span class="p">{</span><span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span><span class="p">};</span>
+<span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span> <span class="c1">// реализация функций ADC_GENERAL</span>
+     <span class="c1">// ниже идут некроссплатформенные функции, которых нет в интерфейсе</span>
+<span class="n">public</span> <span class="kt">bool</span> <span class="n">getOverrunInterruptEnabled</span><span class="p">();</span>
+<span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span>
+<span class="p">}</span>
+<span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span>
+<span class="c1">// После этого можем инстанцировать пакет для работы с АЦП STM</span>
+<span class="c1">// с указанием модулям</span>
+<span class="cp">#define_module stm8l152c6cfg = STM8l152c6_GeneralConfig&lt;...&gt;</span>
+<span class="cp">#define_module adc_hardware = ADC_STM &lt;stm8l152c6cfg,unsigned char&gt; ;</span>
+<span class="cp">#define_module adc_crossplatform = (ADC_GENERAL &lt; generalConfig, ValueTYpe, BitsResolution_enum = ADC_STM.BitsResolution_enum&gt;, ...) adc_hardware;</span>
+<span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span>
+<span class="n">adc_crossplatform</span><span class="p">.</span><span class="n">Init</span><span class="p">();</span> <span class="c1">// кроссплатформенная инструкция</span>
+<span class="n">adc_hardware</span><span class="p">.</span><span class="n">getOverrunInterruptEnabled</span><span class="p">();</span><span class="c1">// некроссплатформенная инструкция</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h1>Инстанциация шаблонов<a class="headerlink" href="#id11" title="Ссылка на этот заголовок">¶</a></h1>
+<p>При инстанциации пина задается некая строка в формате <code class="docutils literal"><span class="pre">[особый</span> <span class="pre">идентификатор</span> <span class="pre">порта,</span>
+<span class="pre">номер</span> <span class="pre">бита</span> <span class="pre">в</span> <span class="pre">порте</span> <span class="pre">&lt;режим&gt;]</span></code>, где <code class="docutils literal"><span class="pre">режим</span> <span class="pre">=</span> <span class="pre">input,</span> <span class="pre">inputPullUp,</span> <span class="pre">output</span></code>.
+В коде возможны следующие обращения к пину:</p>
+<p>Пример инстанциации пинов:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="c1">// импорт шаблона модуля, чтобы его можно было использовать</span>
+<span class="n">import</span> <span class="n">MCUBlocks</span><span class="p">.</span><span class="n">PIRControl</span>
+<span class="c1">// Модуль управления PIRC1 из шаблона PIRControl</span>
+<span class="c1">// Пин МК PA2, подключаем к пину блока State</span>
+<span class="c1">// Пин МК PA0, подключенному к пину блока Power</span>
+<span class="c1">// Пин МК PA1, подключенному к пину блока Value</span>
+<span class="cp">#init_module PIRControl PIRC1    </span><span class="c1">// определение блока</span>
+<span class="p">{</span>
+<span class="c1">// здесь идет задание статических параметров блока</span>
+<span class="c1">// Задать параметр шаблона State блока PIRC1 = PA2 на вход</span>
+<span class="cp">#define_pin State [A,2,input]</span>
+<span class="c1">// Задать параметр шаблона Power блока PIRC1 = PA0</span>
+<span class="cp">#define_pin Power [A,0]</span>
+<span class="c1">// Задать параметр шаблона Value блока PIRC1 = PA1 на выход</span>
+<span class="cp">#define_pin Value [A,1,output]</span>
+<span class="c1">// Задать параметр шаблона PWM как блок PWM1</span>
+<span class="cp">#define_module PWM PWM1</span>
+<span class="c1">// Установка макропараметра</span>
+<span class="cp">#define_macro freq 45</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="n">func</span><span class="p">()</span> <span class="c1">// пользовательская функция</span>
+<span class="p">{</span>
+<span class="n">PIRC1</span><span class="p">.</span><span class="n">duration</span><span class="o">=</span><span class="mi">48</span><span class="p">;</span> <span class="c1">// установка переменной модуля</span>
+<span class="n">PIRC1</span><span class="p">.</span><span class="n">setFreq</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span> <span class="c1">// вызов С-функции, возможно inline</span>
+<span class="n">PIRC1</span><span class="p">.</span><span class="n">State</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// записали единицу в PA2</span>
+<span class="p">}</span>
+<span class="n">LED_PIN</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// взвести, т.к. значение</span>
+<span class="n">LED_PIN</span><span class="p">.</span><span class="n">high</span><span class="p">();</span> <span class="c1">// взвести</span>
+<span class="n">LED_PIN</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// сбросить</span>
+<span class="n">LED_PIN</span><span class="p">.</span><span class="n">low</span><span class="p">();</span> <span class="c1">// сбросить</span>
+<span class="n">LED_PIN</span><span class="p">.</span><span class="n">invert</span><span class="p">();</span> <span class="c1">// инвертировать</span>
+<span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">LED_PIN</span><span class="p">;</span> <span class="c1">// использовать текущее значение</span>
+<span class="n">LED_PIN</span><span class="p">.</span><span class="n">modeOutput</span><span class="p">();</span> <span class="c1">// установить на выход (если режим при инстанциации</span>
+    <span class="c1">// не был задан или был задан на выход)</span>
+<span class="n">LED_PIN</span><span class="p">.</span><span class="n">modeInputPullUp</span><span class="p">();</span> <span class="c1">// установить на вход с подтяжкой (если режим</span>
+ <span class="c1">// не был задан или задан на вход)</span>
+<span class="n">LED_PIN</span><span class="p">.</span><span class="n">modeInput</span><span class="p">();</span> <span class="c1">// установить на вход без подтяжки (если режим не</span>
+   <span class="c1">// был задан или на вход)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h1>Тракт трансляции<a class="headerlink" href="#id12" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Транслятору Embeddecy на вход подается список файлов (<code class="docutils literal"><span class="pre">.с2_0</span></code>, <code class="docutils literal"><span class="pre">.с</span></code> и <code class="docutils literal"><span class="pre">.h</span></code> файлов проекта),
+в которых он находит модули и их элементы (также может быть указан архив файлов).
+Embeddecy-файлы преобразуются в С-файлы следующим образом:</p>
+<ol class="arabic simple">
+<li>каждый Embeddecy-файл превращается в С-файл, все конструкции языка Embeddecy раскрываются в конструкции языка С;</li>
+<li>пространства имен языка Embeddecy раскрываются так, что к называниям всех элементов, объявленных в некотором пространстве имен, добавляется название этого пространства имен; к элементам модулей добавляется название модуля, в котором они объявлены;</li>
+<li>файлы <code class="docutils literal"><span class="pre">.с</span></code> и <code class="docutils literal"><span class="pre">.h</span></code> проверяются транслятором Си 2.0 на наличие ошибок, как с точки зрения языка Си, так и с точки зрения взаимодействия конструкций Embeddecy и C;</li>
+<li>все файлы устройства собираются и компилируются в бинарный файл.</li>
+</ol>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/image2.png"><img alt="_images/image2.png" src="_images/image2.png" style="width: 265.0px; height: 322.0px;" /></a>
+</div>
+</div>
+<div class="section" id="id13">
+<h1>Пример описания модуля управления виртуальным блоком, управляющим светодиодом<a class="headerlink" href="#id13" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">lang</span><span class="o">=</span><span class="n">c</span><span class="p">]</span>
+<span class="n">template</span> <span class="n">package</span> <span class="n">LEDControl</span>
+<span class="cp">#external_import</span>
+<span class="p">{</span>
+     <span class="cp">#include</span> <span class="cpf">&lt;avr/io.h&gt;</span><span class="cp"></span>
+<span class="p">}</span>
+<span class="p">{</span>
+     <span class="cp">#param_macro PWM;</span>
+     <span class="cp">#param_pin LED_PIN;</span>
+     <span class="n">private</span> <span class="kt">bool</span> <span class="n">LEDstate</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+     <span class="c1">// Включить светодиод</span>
+ <span class="kt">void</span> <span class="nf">On</span><span class="p">()</span>
+ <span class="p">{</span>
+     <span class="n">LED_PIN</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="c1">// Выключить светодиод</span>
+ <span class="kt">void</span> <span class="nf">Off</span><span class="p">()</span>
+ <span class="p">{</span>
+     <span class="n">LED_PIN</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="p">}</span>
+     <span class="c1">// Включить светодиод с определенной яркостью (с использованием ШИМ)</span>
+ <span class="kt">void</span> <span class="nf">OnWithBrightness</span><span class="p">(</span><span class="kt">int</span> <span class="n">percents</span><span class="p">)</span>
+ <span class="p">{</span>
+     <span class="c1">// перечисляются параметры для иниц. ШИМа</span>
+     <span class="c1">// настроим ШИМ на генерацию прерывания,</span>
+             <span class="c1">// и установим туда свой обработчик, который будет Toggl’ить LED</span>
+             <span class="n">PWM</span><span class="p">.</span><span class="n">Enabled</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span> <span class="c1">// стадартно: на всякий случай</span>
+             <span class="n">PWM</span><span class="p">.</span><span class="n">Freq</span> <span class="o">=</span> <span class="n">MCU</span><span class="p">.</span><span class="n">freq</span> <span class="o">/</span> <span class="n">block</span><span class="p">.</span><span class="n">prescailer</span><span class="p">;</span> <span class="c1">// на частоте в 2 раза</span>
+             <span class="c1">// меньше MCU. Использовали свойство блока “prescailer”</span>
+             <span class="n">PWM</span><span class="p">.</span><span class="n">Duty</span> <span class="o">=</span> <span class="n">percents</span><span class="p">;</span> <span class="c1">// скважность</span>
+             <span class="n">PWM</span><span class="p">.</span><span class="n">PulsesToSend</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// бесконечное количество импульсов слать</span>
+     <span class="n">PWM</span><span class="p">.</span><span class="n">InterruptEnabled</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span> <span class="c1">// разрешаем прерывание</span>
+     <span class="n">PWM</span><span class="p">.</span><span class="n">OnTick</span> <span class="o">+=</span> <span class="n">PWM1_Tick_handler</span><span class="p">;</span> <span class="c1">// устанавливаем обработчик</span>
+     <span class="n">PWM</span><span class="p">.</span><span class="n">Enabled</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span> <span class="c1">// включаем ШИМ</span>
+ <span class="p">}</span>
+ <span class="c1">// Фактически данный обработчик будет вызываться из прерывания ШИМа,</span>
+ <span class="c1">// а лучше - встраиваться в него inline’ом</span>
+ <span class="n">private</span> <span class="kt">void</span> <span class="nf">PWM1_Tick_handler</span><span class="p">()</span>
+ <span class="p">{</span>
+     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">LEDstate</span><span class="p">)</span>
+             <span class="n">On</span><span class="p">();</span>
+     <span class="k">else</span>    <span class="n">Off</span><span class="p">();</span>
+     <span class="n">LEDstate</span> <span class="o">=</span> <span class="o">!</span> <span class="n">LEDstate</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id14">
+<h1>Пример кода, включающий различные конструкции (без программного смысла)<a class="headerlink" href="#id14" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">namespace</span> <span class="n">myns</span>
+<span class="p">{</span>
+<span class="n">import</span> <span class="n">MCU</span> <span class="n">Blocks</span><span class="p">.</span><span class="n">atmel</span><span class="p">.</span><span class="n">atmega1280</span><span class="p">.</span><span class="n">UART1</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">MCU</span> <span class="n">Blocks</span><span class="p">.</span><span class="n">atmel</span><span class="p">.</span><span class="n">atmega1280</span><span class="p">.</span><span class="n">SPI1</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">MCU</span> <span class="n">Blocks</span><span class="p">.</span><span class="n">atmel</span><span class="p">.</span><span class="n">atmega1280</span><span class="p">.</span><span class="n">RadioModuleControl</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">myns2</span><span class="p">;</span>
+
+
+<span class="cp">#init_module MCU Blocks.atmel.atmega1280.UART1 UART1</span>
+<span class="c1">// модуль UART1 из шаблона UART1</span>
+<span class="p">{</span>
+    <span class="n">baud_rate</span> <span class="o">=</span> <span class="mi">19200</span><span class="p">;</span>
+    <span class="n">transmit</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="n">receive</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="n">word_size</span> <span class="o">=</span> <span class="n">UART</span><span class="p">.</span><span class="n">WORS_SIZES</span><span class="p">.</span><span class="n">bit8</span><span class="p">;</span>
+    <span class="n">stop_bits</span> <span class="o">=</span> <span class="n">UART</span><span class="p">.</span><span class="n">STOP_BITS</span><span class="p">.</span><span class="n">TWO</span>
+<span class="p">}</span>
+
+<span class="cp">#init_module MCU Blocks.atmel.atmega1280.SPI1 SPI1</span>
+<span class="p">{</span>
+     <span class="n">mode</span> <span class="o">=</span> <span class="n">master</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">#init_module MCU Blocks.atmel.atmega1280.RadioModuleControl</span>
+<span class="p">{</span>
+     <span class="n">SPI</span> <span class="o">=</span> <span class="n">SPI1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">package</span> <span class="n">package1</span>
+<span class="p">{</span>
+     <span class="k">enum</span> <span class="n">MyEventEnum</span>
+    <span class="p">{</span>
+     <span class="n">val1</span><span class="p">,</span> <span class="n">val2</span><span class="p">,</span> <span class="n">val3</span>
+    <span class="p">}</span>
+
+     <span class="n">event</span> <span class="n">myevent</span><span class="p">(</span><span class="n">MyEventEnum</span> <span class="n">e</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">);</span> <span class="c1">// определили событие</span>
+
+<span class="kt">void</span> <span class="nf">func1</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="n">send</span> <span class="n">UART1</span><span class="p">.</span><span class="n">sendString</span><span class="p">(</span><span class="s">&quot;abc&quot;</span><span class="p">);</span>
+     <span class="n">PORTA</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+     <span class="n">bit</span> <span class="n">b</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">7</span><span class="p">];</span> <span class="c1">// берем последний бит</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>   <span class="c1">// == 0b == 0x0</span>
+     <span class="p">{</span>
+         <span class="n">PORTA</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+         <span class="n">myevent</span><span class="p">(</span><span class="n">MyEventEnum</span><span class="p">.</span><span class="n">val2</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+     <span class="p">}</span>
+     <span class="k">else</span> <span class="n">myevent</span><span class="p">(</span><span class="n">MyEventEnum</span><span class="p">.</span><span class="n">val3</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">float</span> <span class="n">farray</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mf">123.0</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">32434</span><span class="p">};</span>
+<span class="kt">float</span> <span class="n">farray2</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+<span class="kt">void</span> <span class="nf">func2</span><span class="p">()</span>
+<span class="p">{</span>
+     <span class="k">if</span> <span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">farray2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
+         <span class="n">myevent</span><span class="p">(</span><span class="n">MyEventEnum</span><span class="p">.</span><span class="n">val1</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">task</span> <span class="n">task1</span>
+<span class="p">{</span>
+     <span class="n">event</span> <span class="n">myevent</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">);</span>
+     <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+     <span class="kt">void</span> <span class="nf">func1</span><span class="p">()</span> <span class="p">{}</span>
+     <span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+     <span class="p">{</span>
+      <span class="n">myevent</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">+=</span> <span class="n">task2</span><span class="p">.</span><span class="n">mes1</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+      <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+            <span class="p">{</span>
+                 <span class="n">task2</span><span class="p">.</span><span class="n">mes2</span><span class="p">();</span>
+                 <span class="n">delay_ms</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+                 <span class="n">send</span> <span class="n">task3</span><span class="p">.</span><span class="n">mes4</span><span class="p">();</span>
+                 <span class="n">task3</span><span class="p">.</span><span class="n">mes1</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">);</span>
+                 <span class="n">myevent</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="n">myevent</span> <span class="o">-=</span> <span class="n">task2</span><span class="p">.</span><span class="n">func1</span><span class="p">;</span>
+     <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">task</span> <span class="n">task2</span>
+<span class="p">{</span>
+ <span class="n">message</span> <span class="n">mes1</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">func1</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+ <span class="n">PORTA</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+ <span class="n">PORTB</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+ <span class="n">PORTB</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+     <span class="p">}</span>
+
+      <span class="n">message</span> <span class="nf">mes2</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">);</span>
+      <span class="kt">void</span> <span class="nf">func2</span><span class="p">(</span><span class="kt">void</span><span class="p">){}</span>
+
+      <span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+      <span class="p">{</span>
+            <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+            <span class="p">{</span>
+                 <span class="n">accept</span> <span class="n">mes1</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">do</span> <span class="n">func1</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+                 <span class="n">accept</span> <span class="n">mes2</span><span class="p">()</span> <span class="k">do</span> <span class="n">func2</span><span class="p">();</span>
+            <span class="p">}</span>
+      <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">task</span> <span class="n">task3</span>
+<span class="p">{</span>
+     <span class="n">message</span> <span class="n">mes1</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y</span><span class="p">);</span>
+     <span class="n">message</span> <span class="nf">mes4</span><span class="p">();</span>
+     <span class="kt">void</span> <span class="nf">func4</span><span class="p">(){}</span>
+     <span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+     <span class="p">{</span>
+     <span class="k">for</span> <span class="p">(;;)</span>
+     <span class="p">{</span>
+          <span class="n">accept</span> <span class="n">mes1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">do</span>
+          <span class="p">{</span>
+              <span class="n">x</span><span class="o">++</span><span class="p">;</span> <span class="n">y</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+              <span class="n">send</span> <span class="n">task4</span><span class="p">.</span><span class="n">mes1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">via</span> <span class="n">RadioModuleControl</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="n">accept</span> <span class="n">mes4</span><span class="p">()</span> <span class="k">do</span> <span class="n">func4</span><span class="p">();</span>
+     <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">}</span> <span class="c1">// end namespace</span>
+<span class="n">namespace</span> <span class="n">myns2</span> <span class="c1">//другое устройство</span>
+<span class="p">{</span>
+<span class="n">task</span> <span class="n">task4</span>
+<span class="p">{</span>
+     <span class="n">message</span> <span class="n">mes1</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y</span><span class="p">);</span>
+     <span class="n">body</span>
+     <span class="p">{</span>
+     <span class="k">for</span> <span class="p">(;;)</span>
+       <span class="p">{</span>
+          <span class="n">accept</span> <span class="n">mes1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+       <span class="c1">// зачем-то просто принятие без чтения параметров</span>
+       <span class="p">}</span>
+     <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, ООО &#34;НПП САТЭК плюс&#34;.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

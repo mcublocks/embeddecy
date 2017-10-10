@@ -1,0 +1,6 @@
+/build/
+/target/
+/MinGW/
+/AVRToolchain/
+/GNU Tools ARM Embedded/
+/GNUToolsARMEmbedded/

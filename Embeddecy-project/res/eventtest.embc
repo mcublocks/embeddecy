@@ -1,0 +1,62 @@
+
+task task1 {
+event e2(int x);
+	body {
+		for (;;) {
+			task2.ev += (int x)->{print(x-5435345345);int a =5+x-asasa/ffdx*x*x; };
+			GPIO_SetBits(GPIOE, GPIO_Pin_8);
+			delay_ms( 452352+534534-43534*dsfsdf/sdfsd );
+			GPIO_ResetBits(GPIOE, GPIO_Pin_8);
+			
+			delay_ms(200);
+			e2("a"+(25/45648) *fdjfkbsdfk,dssnkddn);
+			
+			
+		}
+	}
+}
+task task2 {
+	event e2(int x);
+	event ev(int x);
+	body {
+		for (;;) {
+		
+			GPIO_SetBits(GPIOE, GPIO_Pin_9);
+			delay_ms(200);
+			GPIO_ResetBits(GPIOE, GPIO_Pin_9);
+			delay_ms(200);
+			
+
+		}
+	}
+}
+
+
+
+int main() {
+	GPIO_InitTypeDef gpio;
+// Blue LED is connected to port E, pin 8 (AHB bus)
+	//RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOE, ENABLE);
+	//RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
+
+// Configure port E (LED)
+	GPIO_StructInit(&gpio);
+	gpio.GPIO_Mode = GPIO_Mode_OUT;
+	gpio.GPIO_Pin = LEDS;
+	GPIO_Init(GPIOE, &gpio);
+
+	// setting the USER BUTTON pin
+	gpio.GPIO_Pin = GPIO_Pin_0;
+	gpio.GPIO_Mode = GPIO_Mode_IN;
+	GPIO_Init(GPIOA, &gpio);
+
+	startSheduler();
+		task2.ev += (int x)->{print(x);int a =300; };
+	task2.ev += (int x)->{print(x);int a =5+x-asasa/ffdx*x*x; };
+	task2.e2 += (int x)->{print(x);int a =200; };
+
+// Blinking LEDS
+	while (1) {
+	
+	}
+}
