@@ -26,11 +26,13 @@ java -jar embс.jar -file "res/event-test/eventtest3.embc" -pathtocompiler "GNU 
 Для корректной работы потребуется:
 - `Eclipse Luna IDE for Java and DSL Developers`;
 - `ANTlR 4 SDK` - плагин для Eclipse;
-- Последняя версия `antlr-4.7-complete.jar`.
-Для использования новой версии требуется зайти в меню `Windows ->Preferences`, выбрать `ANTLR 4 -> Tool` и указать путь к jar-файлу. Далее указать в конфигурации запуска `Run -> Run Configurations` необходимые параметры командной строки и запустить по нажатию на кнопку `Run`. В качестве главного класса требуется выбрать `EmbeddecyRunner.java`.
+- Последняя версия `antlr-4.7-complete.jar`.Для использования новой версии требуется зайти в меню `Windows ->Preferences`, выбрать `ANTLR 4 -> Tool` и указать путь к jar-файлу. 
+
+Для работы с проектом его требуется импортировать, как обычный Eclipse-проект. Далее указать в конфигурации запуска `Run -> Run Configurations` необходимые параметры командной строки и запустить по нажатию на кнопку `Run`. В качестве главного класса требуется выбрать `EmbeddecyRunner.java`.
 
 ## Полезные ссылки
 
 - [Страница проекта](http://mcublocks.com/embeddecy-ide/)
 - [Eclipse Luna IDE](https://www.eclipse.org/downloads/packages/release/luna/sr2)
 - [ANTLR4 IDE Plugin](http://www.antlr.org/tools.html)
+- [Документация] (http://mcublocks.com/embeddecy-ide/docs/)
