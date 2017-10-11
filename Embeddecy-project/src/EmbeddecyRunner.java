@@ -30,7 +30,7 @@ public class EmbeddecyRunner {
 		}
 		
 		
-		//System.out.println(mygenerator.generate(embcFilePath, compilatorExePath));
-		System.out.println(mygenerator.generate("res/event-test/eventtest4.embc", "GNU Tools ARM Embedded/62017-q1-update/bin/arm-none-eabi-gcc.exe"));
+		System.out.println(mygenerator.generate(embcFilePath, compilatorExePath));
+		//System.out.println(mygenerator.generate("res/event-test/eventtest5.embc", "GNU Tools ARM Embedded/62017-q1-update/bin/arm-none-eabi-gcc.exe"));
 	}
 }
