@@ -35,4 +35,5 @@ java -jar embс.jar -file "res/event-test/eventtest3.embc" -pathtocompiler "GNU 
 - [Страница проекта](http://mcublocks.com/embeddecy-ide/)
 - [Eclipse Luna IDE](https://www.eclipse.org/downloads/packages/release/luna/sr2)
 - [ANTLR4 IDE Plugin](http://www.antlr.org/tools.html)
+- [Установка плагина ANTLR4 IDE в Eclipse](https://github.com/antlr4ide/antlr4ide)
 - [Документация](http://mcublocks.com/embeddecy-ide/docs/)
